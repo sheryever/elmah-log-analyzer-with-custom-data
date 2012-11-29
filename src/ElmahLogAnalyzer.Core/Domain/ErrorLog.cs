@@ -20,6 +20,7 @@ namespace ElmahLogAnalyzer.Core.Domain
 			QuerystringValues = new List<NameValuePair>();
 			ClientInformation = new ClientInformation();
 			StatusCodeInformation = new HttpStatusCodeInformation();
+			CustomDataValues = new List<NameValuePair>();
 		}
 
 		public string Application { get; set; }
@@ -63,6 +64,8 @@ namespace ElmahLogAnalyzer.Core.Domain
 		public HttpStatusCodeInformation StatusCodeInformation { get; private set; }
 
 		public ServerInformation ServerInformation { get; private set; }
+
+		public List<NameValuePair> CustomDataValues { get; private set; }
 
 		public void SetClientInformation(ClientInformation information)
 		{
@@ -128,6 +131,11 @@ namespace ElmahLogAnalyzer.Core.Domain
 		public void AddQuerystringValue(string name, string value)
 		{
 			QuerystringValues.Add(new NameValuePair(name, value));
+		}
+
+		public void AddCustomDataValue(string name, string value)
+		{
+			CustomDataValues.Add(new NameValuePair(name, value));
 		}
 
 		public void AddFormValue(string name, string value)

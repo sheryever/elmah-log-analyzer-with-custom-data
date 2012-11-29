@@ -347,5 +347,22 @@ namespace ElmahLogAnalyzer.UnitTests.Domain
 			Assert.That(error.QuerystringValues[0].Name, Is.EqualTo("name"));
 			Assert.That(error.QuerystringValues[0].Value, Is.EqualTo("value"));
 		}
+
+		[Test]
+		public void AddCustomDataValue_AddsCustomData()
+		{
+			// arrange
+			var error = new ErrorLog();
+
+			// act
+			error.AddCustomDataValue("name", "value");
+
+			// assert
+			Assert.That(error.CustomDataValues.Count, Is.EqualTo(1));
+
+			var variable = error.CustomDataValues[0];
+			Assert.That(variable.Name, Is.EqualTo("name"));
+			Assert.That(variable.Value, Is.EqualTo("value"));
+		}
 	}
 }

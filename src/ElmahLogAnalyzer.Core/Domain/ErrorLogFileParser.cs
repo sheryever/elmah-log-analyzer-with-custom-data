@@ -37,6 +37,7 @@ namespace ElmahLogAnalyzer.Core.Domain
 				ParseFormValues();
 				ParseQuerystringValues();
 				ParseCookies();
+				ParseCustomDataValues();
 
 				SetStatusCodeInformation();
 				SetServerInformation();
@@ -51,7 +52,12 @@ namespace ElmahLogAnalyzer.Core.Domain
 			}
 		}
 
-        private void ParseId()
+		private void ParseCustomDataValues()
+		{
+			ParseSegment(_errorLog.AddCustomDataValue, "//data//item");
+		}
+
+		private void ParseId()
         {
             Guid errorId;
            
